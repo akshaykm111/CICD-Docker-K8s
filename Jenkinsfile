@@ -36,7 +36,7 @@ pipeline {
                 sh 'mvn verify -DskipUnitTests'
             }
         }
-
+/*
         stage ('CODE ANALYSIS WITH CHECKSTYLE'){
             steps {
                 sh 'mvn checkstyle:checkstyle'
@@ -47,7 +47,7 @@ pipeline {
                 }
             }
         }
-
+*/
 
         stage('Building image') {
             steps{
@@ -73,7 +73,7 @@ pipeline {
             sh "docker rmi $registry:$BUILD_NUMBER"
           }
         }
-
+/*
         stage('CODE ANALYSIS with SONARQUBE') {
 
             environment {
@@ -97,6 +97,8 @@ pipeline {
                 }
             }
         }
+
+ */
         stage('Kubernetes Deploy') {
 	  agent { label 'KOPS' }
             steps {

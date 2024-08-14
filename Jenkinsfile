@@ -52,7 +52,7 @@ pipeline {
         stage('Building image') {
             steps{
               script {
-                dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                dockerImage = docker.build registry + ":V$BUILD_NUMBER"
               }
             }
         }
@@ -61,7 +61,7 @@ pipeline {
           steps{
             script {
               docker.withRegistry( '', registryCredential ) {
-                dockerImage.push("$BUILD_NUMBER")
+                dockerImage.push("V$BUILD_NUMBER")
                 dockerImage.push('latest')
               }
             }
@@ -70,7 +70,7 @@ pipeline {
 
         stage('Remove Unused docker image') {
           steps{
-            sh "docker rmi $registry:$BUILD_NUMBER"
+            sh "docker rmi $registry:V$BUILD_NUMBER"
           }
         }
 /*
@@ -102,7 +102,7 @@ pipeline {
         stage('Kubernetes Deploy') {
 	  agent { label 'KOPS' }
             steps {
-                    sh "helm upgrade --install --force vproifle-stack helm/vprofilecharts --set appimage=${registry}:${BUILD_NUMBER} --namespace prod"
+                    sh "helm upgrade --install --force vproifle-stack helm/vprofilecharts --set appimage=${registry}:V${BUILD_NUMBER} --namespace prod"
             }
         }
 

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: myapp
+      env: eks
+  template:
+    metadata:
+      labels:
+        app: myapp
+        env: eks
+    spec:
+      containers:
+        - name: myapp
+          image: kubeakshay111/flight:V3
+          ports:
+            - containerPort: 80

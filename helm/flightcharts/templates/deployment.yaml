@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: green
 spec:
-  replicas: 0
+  replicas: 3
   selector:
     matchLabels:
       app: myapp
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: myapp
-          image: kubeakshay111/flight:V3
+          image: {{ .Values.appimage}}
           ports:
             - containerPort: 80

@@ -1,9 +1,12 @@
-FROM tomcat:8-jre11
-
-RUN rm -rf /usr/local/tomcat/webapps/*
-
-COPY target/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
-
-EXPOSE 8080
-CMD ["catalina.sh", "run"]
+FROM ubuntu:latest
+LABEL "Author" = "AkshayKM"
+LABEL "Project" = "Flight"
+ENV DEBIAN_FRONTEND = noninteractive
+RUN apt update && apt install git -y
+RUN apt install apache2 -y
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+EXPOSE 80
+WORKDIR /var/www/html
+VOLUME /var/log/apache2
+COPY . /var/www/html
 

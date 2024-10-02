@@ -1,0 +1,15 @@
+pineline {
+	agent any
+    environment {
+        registryCredential = ''
+    }
+
+	stages {
+	  stage('Fetch Code') {
+	    step {
+	      git branch: 'FlightBook', url: 'https://github.com/akshaykm111/CICD-Docker-K8s.git'
+	    }
+	  }
+	} 
+      
+}

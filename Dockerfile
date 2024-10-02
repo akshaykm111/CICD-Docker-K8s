@@ -9,4 +9,3 @@ EXPOSE 80
 WORKDIR /var/www/html
 VOLUME /var/log/apache2
 COPY . /var/www/html
-

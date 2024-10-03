@@ -1,15 +1,25 @@
 pineline {
 	agent any
-    environment {
-        registryCredential = ''
-    }
+	environment {
+
+	}
 
 	stages {
 	  stage('Fetch Code') {
-	    step {
+	    steps {
 	      git branch: 'FlightBook', url: 'https://github.com/akshaykm111/CICD-Docker-K8s.git'
 	    }
 	  }
-	} 
-      
-}
+	  stage('Build Docker') {
+	    steps {
+	      script {
+	         sh '''
+				echo 'Build Docker Image'
+				docker build -t kubeakshay/flightbook:${BUILD_NUMBER} .
+				
+				'''
+		  }
+		}
+	  }
+	}
+}	

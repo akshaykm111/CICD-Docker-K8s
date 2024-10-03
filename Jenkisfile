@@ -3,7 +3,6 @@ pineline {
 	environment {
 
 	}
-
 	stages {
 	  stage('Fetch Code') {
 	    steps {

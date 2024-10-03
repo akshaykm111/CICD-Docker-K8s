@@ -1,8 +1,9 @@
 pineline {
 	agent any
 	environment {
-
-	}
+        registry = "kubeakshay111/vproapp"
+        registryCredential = 'dockerhub'
+    }
 	stages {
 	  stage('Fetch Code') {
 	    steps {

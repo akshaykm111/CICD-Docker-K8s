@@ -11,9 +11,7 @@ pipeline {
 	    steps {
 	      script {
 	         sh '''
-				echo 'Build Docker Image'
 				docker build -t kubeakshay111/flightbook:V${BUILD_NUMBER} .
-				
 				'''
 		  }
 		}

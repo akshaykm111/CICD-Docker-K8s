@@ -1,6 +1,6 @@
 pipeline {
 	agent any
-	
+
 	stages {
 	  stage('Fetch Code') {
 	    steps {
@@ -12,7 +12,7 @@ pipeline {
 	      script {
 	         sh '''
 				echo 'Build Docker Image'
-				docker build -t kubeakshay111/flightbook:V${BUILD_NUMBER} .
+				docker build -t kubeakshay111/flightbook:${BUILD_NUMBER} .
 				
 				'''
 		  }

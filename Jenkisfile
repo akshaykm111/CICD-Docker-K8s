@@ -12,7 +12,7 @@ pipeline {
 	      script {
 	         sh '''
 				echo 'Build Docker Image'
-				docker build -t kubeakshay/flightbook:${BUILD_NUMBER} .
+				docker build -t kubeakshay111/flightbook:${BUILD_NUMBER} .
 				
 				'''
 		  }

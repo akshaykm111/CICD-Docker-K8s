@@ -1,6 +1,5 @@
 pipeline {
 	agent any
-
 	
 	stages {
 	  stage('Fetch Code') {

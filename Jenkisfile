@@ -1,7 +1,7 @@
 pineline {
 	agent any
 	environment {
-        registry = "kubeakshay111/vproapp"
+        registry = "kubeakshay111"
         registryCredential = 'dockerhub'
     }
 	stages {

@@ -4,6 +4,7 @@ pineline {
         registry = "kubeakshay111"
         registryCredential = 'dockerhub'
     }
+	
 	stages {
 	  stage('Fetch Code') {
 	    steps {

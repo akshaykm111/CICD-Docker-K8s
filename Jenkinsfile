@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script {
                     // Push Docker image to Docker Hub
-                    sh "docker push ${DOCKER_IMAGE}:${IMAGE_TAG}"
+                    sh "docker push ${DOCKER_IMAGE}:V${BUILD_NUMBER}"
                 }
             }
         }

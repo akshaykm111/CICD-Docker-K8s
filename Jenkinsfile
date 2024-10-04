@@ -4,6 +4,8 @@ pipeline {
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
         DOCKER_IMAGE = 'kubeakshay111/flightbook'
+        AWS_CREDENTIALS = credentials('aws-credentials-id')
+        KUBECONFIG = 'aws eks update-kubeconfig --region us-west-2 --name vpro-eks11'
     }
 
     stages {
@@ -33,6 +35,18 @@ pipeline {
             steps {
                 script {
                     sh "docker push ${DOCKER_IMAGE}:V${BUILD_NUMBER}"
+                }
+            }
+        }
+
+        stage('Update K8s Deployment') {
+            steps {
+                script {
+                    // Update Kubernetes deployment with the new image
+                    sh """
+                    export KUBECONFIG=${KUBECONFIG}
+                    helm install --namespace dev flight-stack helm/flightcharts set appimage=${DOCKER_IMAGE}:V${BUILD_NUMBER}
+                    """
                 }
             }
         }

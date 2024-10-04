@@ -45,7 +45,7 @@ pipeline {
                     // Update Kubernetes deployment with the new image
                     sh """
                     export KUBECONFIG=${KUBECONFIG}
-                    helm install --namespace dev flight-stack helm/flightcharts set appimage=${DOCKER_IMAGE}:V${BUILD_NUMBER}
+                    kubectl create namespace dev && helm install --namespace dev flight-stack helm/flightcharts --set appimage=${DOCKER_IMAGE}:V${BUILD_NUMBER}
                     """
                 }
             }

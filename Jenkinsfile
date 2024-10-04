@@ -4,7 +4,6 @@ pipeline {
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials') // Your Docker Hub credentials
         DOCKER_IMAGE = 'kubeakshay111/flightbook' // Replace with your image name
-        IMAGE_TAG = 'latest' // or use BUILD_NUMBER for unique tags
     }
 
     stages {
@@ -19,7 +18,7 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                    sh "docker build -t ${DOCKER_IMAGE}:${IMAGE_TAG} ."
+                    sh "docker build -t ${DOCKER_IMAGE}:V${BUILD_NUMBER} ."
                 }
             }
         }

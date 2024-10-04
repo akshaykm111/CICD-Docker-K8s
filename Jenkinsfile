@@ -46,7 +46,7 @@ pipeline {
         always {
             script {
                 // Clean up the workspace
-                sh "docker rmi ${DOCKER_IMAGE}:${IMAGE_TAG}"
+                sh "docker rmi ${DOCKER_IMAGE}:V${BUILD_NUMBER}"
             }
         }
     }
